@@ -1,37 +1,11 @@
 # Lab session #9: Using Speech to Text API for task automation
-<!--
-what is speech to text
-technology we wanna use/teach
-
-TASK 1
-
-
-explain what is the google service about speech to text
-sign up
-api keys
-
-
-let the user try the service through the browser (if it’s possible)
-
-TASK 2
-the user have to send a file to the API
-let the user use the streaming version
-
-
-TASK 3
-we provide to the user some audio-track and the user has to sent all of them to Google and collect the results(text) and then make analysis about them (most common word)
-
-TASK 4
-streaming (microphone) and create a script that through os python library do something in the terminal (like creating a file)
-
-{
-“create directory <name>” : mkdir <name>
-“create file <name>” : touch <name>
-“print <something>” : echo <something>
-}
-
-Qxy: what are the voice messages talking about?
- -->
+```
+Authors:
+- Demira Dimitrova <demira.zhivkova.dimitrova@estudiantat.upc.edu>
+- Iohan Sardinha <iohan.xavier.sardinha.dutra@estudiantat.upc.edu>
+- Jordi Bosh <jordi.bosch.bosch@estudiantat.upc.edu>
+- Leonardo Menti <leonardo.menti@estudiantat.upc.edu>
+```
 
 In this Lab session we would perform several experiments with the Google [Speech to Text API](https://cloud.google.com/speech-to-text). First we would transcribe an audio file to text. Then we would leverage that feature and try to come out with insights on the topic of the audio. Lastly, we would use the API to automate running commands from the terminal in a voice command fashion.
 
@@ -252,7 +226,15 @@ def listen_print_loop(responses):
 
 Modify a litle bit this function behaviour in order to answer to add the user's desire of creating a new folder and showing files.
 
+Q91: What problems have you found developing this section? How did you solve them?
+Q92: How long have you been working on this session? What have been the main difficulties you have faced and how have you solved them?
 ## How to deliver the assignment
-
-Produce a README file with all the screeshots and comments in order to
-let us understand what you have done. 
+Use the private repo named https://github.com/CCBDA-UPC/2022-9-xx. Upload a README.md with your responses to the above questions and description of the development process, together with authors.json with both members email addresses:
+```
+{
+  "authors": [
+    "FIRSTNAME1.LASTNAME1@estudiantat.upc.edu",
+    "FIRSTNAME2.LASTNAME2@estudiantat.upc.edu"
+  ]
+}
+```
