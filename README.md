@@ -147,7 +147,7 @@ a script that, given an audio file, send it to the Speech-to-Text service
 to analyse it.
 
 You're going to analyse a speech of a famous person.
-You can find the speech inside the repository under the name of 
+You can find the speech inside the repository under the name of
 `speech.mp3`. You can use the `long_speech_to_text.py` script to send the
 audio to Google.
 
@@ -174,16 +174,21 @@ you provided. Add them to the README file.
 
 ## Task 4
 
-In this task we are going to try to understand audio from microphone and execute corresponding CLI commands. It works only for Mac.
+In this task we are going to try to understand audio from microphone and execute corresponding CLI commands.
 
 First of all we need to install a library using brew that would help us accessing the I/O from the microphone:
 
 ```
 brew install portaudio
 ```
+
 After that, we need to install the python library pyaudio.
 ```
 pip install pyaudio
+```
+ **If you cannot install `pyaudio` because of an issue with `portaudio.h` then you have to run the following command (Under assumption that the headers are in `/usr/local/include`):**
+```
+pip install --global-option='build_ext' --global-option='-I/usr/local/include' --global-option='-L/usr/local/lib' pyaudio
 ```
 
 Once we have it, we can execute the code:
