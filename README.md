@@ -162,7 +162,7 @@ And we should see how it starts listening to our microphone:
 As we can see, in the terminal it appears what we are saying.
 
 ## Task 4.1
-Now we want to exploit this to tell to the terminal what do we want to do.
+Now we want to exploit this to tell to the computer what do we want to do.
 For example we would like both:
 - When we say "create folder": It should create a new folder
 - When we say "show files": It should list all files that exist in the current folder.
