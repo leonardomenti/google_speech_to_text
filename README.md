@@ -170,8 +170,47 @@ For example we would like both:
 - When we say "create folder": It should create a new folder
 - When we say "show files": It should list all files that exist in the current folder.
 
-Function listen_print_loop listens for the responses the server returns and then it shows them on the terminal.
+Function listen_print_loop in [cli.py](cli.py) listens for the responses the server returns and then it shows them on the terminal.
 
-![](pictures/print_responses.png)
+```
+def listen_print_loop(responses):
+    num_chars_printed = 0
+        for response in responses:
+            if not response.results:
+                continue
+
+            # The `results` list is consecutive. For streaming, we only care about
+            # the first result being considered, since once it's `is_final`, it
+            # moves on to considering the next utterance.
+            result = response.results[0]
+            if not result.alternatives:
+                continue
+
+            # Display the transcription of the top alternative.
+            transcript = result.alternatives[0].transcript
+
+            # Display interim results, but with a carriage return at the end of the
+            # line, so subsequent lines will overwrite them.
+            #
+            # If the previous result was longer than this one, we need to print
+            # some extra spaces to overwrite the previous result
+            overwrite_chars = " " * (num_chars_printed - len(transcript))
+
+            if not result.is_final:
+                sys.stdout.write(transcript + overwrite_chars + "\r")
+                sys.stdout.flush()
+
+                num_chars_printed = len(transcript)
+
+            else:
+
+                # Exit recognition if any of the transcribed phrases could be
+                # one of our keywords.
+                if re.search(r"\b(exit|quit)\b", transcript, re.I):
+                    print("Exiting..")
+                    break
+
+                num_chars_printed = 0
+```
 
 Modify a little bit this function behaviour in order to answer to add the user's desire of creating a new folder and showing files.
