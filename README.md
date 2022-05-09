@@ -85,11 +85,12 @@ Now you can go to the bucket you created in Cloud Storage and you will see the f
 
 You would need to use Service Account Keys.
 How to get the google service account credentials:
-1. Access the Service Accounts page,
-2. Go to the Key tab
-3. Click on Add Key and select Create new key
-4. Select JSON
-5. Save your JSON file on your local machine
+1. Access the Service Accounts page
+2. Create a new Service account and click on it
+3. Go to the Key tab
+4. Click on Add Key and select Create new key
+5. Select JSON
+6. Save your JSON file on your local machine
 
 Now we can start using the API locally.
 
@@ -103,6 +104,41 @@ Install the Speech-to-Text API by running:
 ```
 pip install --upgrade google-cloud-speech
 ```
+
+Go to your bucket in Google Platform and find the audio file that you uploaded in the `audio_files` folder. Click on the file and go to the `Edit access` tab. Set the access to public.  If you have issues setting this access, go to Bucket configurations and set the Access Control to Fine-grained.
+![](pictures/finegrained-access.png)
+
+Then you should be able to set the public access of the file. Copy the gsutil URI of the file and put it in the corresponding place in the following code.
+
+Then run the example:
+
+```
+from google.cloud import speech
+
+# Instantiates a client
+client = speech.SpeechClient()
+
+# The name of the audio file to transcribe
+gcs_uri = "gsutil URI HERE"
+
+audio = speech.RecognitionAudio(uri=gcs_uri)
+
+config = speech.RecognitionConfig(
+    encoding=speech.RecognitionConfig.AudioEncoding.LINEAR16,
+    sample_rate_hertz=8000,
+    language_code="en-US",
+)
+
+# Detects speech in the audio file
+response = client.recognize(config=config, audio=audio)
+
+for result in response.results:
+    print("Transcript: {}".format(result.alternatives[0].transcript))
+
+```
+This will print the transcript of the audio file that you have previously uploaded.
+
+Now you know how to use run Speech-to-Text API from the console and locally.
 
 ## Task 4
 
