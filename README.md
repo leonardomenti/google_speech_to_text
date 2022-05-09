@@ -44,7 +44,7 @@ The Speech-to-Text service could be used to leverage several use cases:
 
 Speech-to-Text can use one of several machine learning models to transcribe your audio file. Google has trained these speech recognition models for specific audio types and sources. Moreover, there are more [languages generally supported](https://cloud.google.com/speech-to-text/docs/languages) by the API. In this Lab we would be using only English US examples, as it has been supported by the most models.
 
-### Task 1
+## Task 1
 You could continue working in the same project that you have created from [the previous lab](https://github.com/CCBDA-UPC/Assignments-2022/blob/origin/Lab08.md). Otherwise -  [create a new project](https://cloud.google.com/resource-manager/docs/creating-managing-projects). Remember to setup Billing for the project.
 
 When you are logged in the Google Platform, search for [Speech to Text API](https://console.cloud.google.com/speech) and enable the API.
@@ -139,6 +139,38 @@ for result in response.results:
 This will print the transcript of the audio file that you have previously uploaded.
 
 Now you know how to use run Speech-to-Text API from the console and locally.
+
+## Task 3
+
+In this task you are going to use the Google Cloud API in order to write
+a script that, given an audio file, send it to the Speech-to-Text service
+to analyse it.
+
+You're going to analyse a speech of a famous person.
+You can find the speech inside the repository under the name of 
+`speech.mp3`. You can use the `long_speech_to_text.py` script to send the
+audio to Google.
+
+Check at the results if they hold with the audio.
+
+### Task 3.2: Result Analysis
+
+Now that you have the transcipt of the speech, you can create another
+script named `analysis.py` and you can look what is the most common
+words of the speech. Analyse the results and create a PNG file containing
+an histogram of what Google thinks about the speech.
+
+### Task 3.3: Student proposal
+
+Let's find some other audio files to analyse. You can retrieve them from
+any sources that you want. The only constraint is that you have to use
+mp3 format and the audio has to be longer than a minute.
+
+You can upload that files in the bucket that you have created before and change
+the script that you have just used in order to analyse them.
+
+Do some screenshot at the results and check if they hold with the audio
+you provided. Add them to the README file.
 
 ## Task 4
 
