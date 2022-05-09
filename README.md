@@ -201,7 +201,7 @@ And we should see how it starts listening to our microphone:
 
 As we can see, in the terminal it appears what we are saying.
 
-## Task 4.1
+### Task 4.1
 Now we want to exploit this to tell to the computer what do we want to do.
 For example we would like both:
 - When we say "create folder": It should create a new folder
@@ -241,7 +241,7 @@ def listen_print_loop(responses):
 
             else:
 
-                # Exit recognition if any of the transcribed phrases could be
+                # Exit recogqnition if any of the transcribed phrases could be
                 # one of our keywords.
                 if re.search(r"\b(exit|quit)\b", transcript, re.I):
                     print("Exiting..")
@@ -250,4 +250,9 @@ def listen_print_loop(responses):
                 num_chars_printed = 0
 ```
 
-Modify a little bit this function behaviour in order to answer to add the user's desire of creating a new folder and showing files.
+Modify a litle bit this function behaviour in order to answer to add the user's desire of creating a new folder and showing files.
+
+## How to deliver the assignment
+
+Produce a README file with all the screeshots and comments in order to
+let us understand what you have done. 
