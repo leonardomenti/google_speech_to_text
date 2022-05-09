@@ -150,6 +150,9 @@ First of all we need to install a library using brew that would help us accessin
 brew install portaudio
 ```
 After that, we need to install the python library pyaudio.
+```
+pip install pyaudio
+```
 
 Once we have it, we can execute the code:
 
