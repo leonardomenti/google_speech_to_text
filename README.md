@@ -1,5 +1,5 @@
 # Lab session #9: Using Speech to Text API for task automation
-<!-- 
+<!--
 what is speech to text
 technology we wanna use/teach
 
@@ -11,7 +11,7 @@ sign up
 api keys
 
 
-let the user try the service through the browser (if it’s possible)	
+let the user try the service through the browser (if it’s possible)
 
 TASK 2
 the user have to send a file to the API
@@ -27,7 +27,7 @@ streaming (microphone) and create a script that through os python library do som
 {
 “create directory <name>” : mkdir <name>
 “create file <name>” : touch <name>
-“print <something>” : echo <something> 
+“print <something>” : echo <something>
 }
 
 Qxy: what are the voice messages talking about?
@@ -42,27 +42,56 @@ The Speech-to-Text service could be used to leverage several use cases:
 
 - Enable the power of voice to create better user experiences -  Voice commands for personal robots or used for software capabilities helping people with different disability needs.
 
-Speech-to-Text can use one of several machine learning models to transcribe your audio file. Google has trained these speech recognition models for specific audio types and sources. Moreover, there are more [languages generally supported](https://cloud.google.com/speech-to-text/docs/languages) by the API. In this Lab we would be using only English US examples, as it has been supported by the most models. 
+Speech-to-Text can use one of several machine learning models to transcribe your audio file. Google has trained these speech recognition models for specific audio types and sources. Moreover, there are more [languages generally supported](https://cloud.google.com/speech-to-text/docs/languages) by the API. In this Lab we would be using only English US examples, as it has been supported by the most models.
 
 ### Task 1
-You could continue working in the same project that you have created from [the previous lab](https://github.com/CCBDA-UPC/Assignments-2022/blob/origin/Lab08.md). Otherwise -  [create a new project](https://cloud.google.com/resource-manager/docs/creating-managing-projects). Remember to setup Billing for the project. 
+You could continue working in the same project that you have created from [the previous lab](https://github.com/CCBDA-UPC/Assignments-2022/blob/origin/Lab08.md). Otherwise -  [create a new project](https://cloud.google.com/resource-manager/docs/creating-managing-projects). Remember to setup Billing for the project.
 
-When you are logged in the Google Platform, search for [Speech to Text API](https://console.cloud.google.com/speech) and enable the API. 
+When you are logged in the Google Platform, search for [Speech to Text API](https://console.cloud.google.com/speech) and enable the API.
 
+![](pictures/enable-api.png)
 
+Then you touch `Create Transcription`  button to run the service. You will see the following:
+
+![](pictures/create-workspace.png)
+
+You need to create a new workspace. Touch `Create workspace` and a side menu will show you the following
+
+![](pictures/create-workspace-2.png)
+
+Go to `Browse` and create a new bucket like this:
+![](pictures/create-bucket.png)
+
+Give it a name and then click `Create`
+
+![](pictures/create-bucket-2.png)
+
+Now Select the workspace that you just created and you would be able to upload a local audio file or select a file from the bucket you just created.
+
+We can use the Open data Voice speech in America English - https://www.voiptroubleshooter.com/open_speech/american.html.
+
+Take one of the files from there and download it on your machine. Then select `Local Upload` and select the audio file that you just downloaded.
+
+In the `Transcription Options` tab, select `en-US` as the Spoken Language. Keep the Transcription Model as Default, click Continue and Submit the transcription.
+
+Then in the side menu there is the `Transcription` tab. Go there and you will find the transcription of the file you just uploaded. When you click on it you will see somehting like this:
+![](pictures/transcriptions.png)
+
+Now you can go to the bucket you created in Cloud Storage and you will see the following folders:
+ - audio_files
+ - transcripts
 
 ## Task 2
-We would use the Open data Voice speech in America Engligh - https://www.voiptroubleshooter.com/open_speech/american.html. Download one of the files. 
 
-You would need to use Service Account Keys. 
+You would need to use Service Account Keys.
 How to get the google service account credentials:
 1. Access the Service Accounts page,
 2. Go to the Key tab
 3. Click on Add Key and select Create new key
-4. Select JSON 
+4. Select JSON
 5. Save your JSON file on your local machine
 
-Now we can start using the API locally. 
+Now we can start using the API locally.
 
 To authenticate locally, set the `GOOGLE_APPLICATION_CREDENTIALS` environment variable to point to your downloaded service account credentials before running this example:
 
