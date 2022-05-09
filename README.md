@@ -103,3 +103,36 @@ Install the Speech-to-Text API by running:
 ```
 pip install --upgrade google-cloud-speech
 ```
+
+## Task 4
+
+In this task we are going to try to understand audio from microphone and execute corresponding CLI commands. It works only for Mac.
+
+First of all we need to install a library using brew that would help us accessing the I/O from the microphone:
+
+```
+brew install portaudio
+```
+After that, we need to install the python library pyaudio.
+
+Once we have it, we can execute the code:
+
+```
+python cli.py
+```
+And we should see how it starts listening to our microphone:
+![](pictures/cli.png)
+
+As we can see, in the terminal it appears what we are saying.
+
+## Task 4.1
+Now we want to exploit this to tell to the terminal what do we want to do.
+For example we would like both:
+- When we say "create folder": It should create a new folder
+- When we say "show files": It should list all files that exist in the current folder.
+
+Function listen_print_loop listens for the responses the server returns and then it shows them on the terminal.
+
+![](pictures/print_responses.png)
+
+Modify a little bit this function behaviour in order to answer to add the user's desire of creating a new folder and showing files.
